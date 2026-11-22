@@ -32,4 +32,4 @@ if ($LASTEXITCODE -ne 0) {
     Write-Error "git push failed. Check SSH access and repository permissions."
     exit 1
 }
-Write-Host "✅ Push completed successfully. You can now view the project in Lovable."
+Write-Host "Push completed successfully. You can now view the project in Lovable."
