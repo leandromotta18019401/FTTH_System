@@ -1,3 +1,6 @@
+#!/usr/bin/env pwsh
+# ci.yml updated to include field service
+
 name: CI
 
 on:
@@ -11,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [finance, noc, crm, stock, payment, bi]
+        service: [finance, noc, crm, stock, payment, bi, field]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node.js
@@ -38,4 +41,3 @@ jobs:
         working-directory: services/${{ matrix.service }}
         run: |
           if [ -f pytest.ini ] || [ -d tests ]; then pytest; fi
-
