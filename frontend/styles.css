@@ -1,4 +1,230 @@
-/* Panel frame styling */
+/* Fresh UI styling matching the reference image */
+/* Global */
+body {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Fixedsys', monospace;
+    background:#061A25; /* dominant dark background */
+    color:#FFFFFF; /* white text */
+}
+
+/* Header (top) */
+.header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#00101D; /* dark header */
+    padding:0.8rem 1.5rem;
+    color:#FFFFFF;
+}
+.header .brand {
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#FFFFFF;
+}
+.header .user-actions i,
+.header .user-actions .avatar {
+    color:#FFFFFF;
+}
+
+/* Top bar (just below header) */
+.top-bar {
+    background:#00101D;
+    color:#FFFFFF;
+    padding:0.5rem 1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.top-bar button {
+    background:none;
+    border:2px solid #FFFFFF;
+    color:#FFFFFF;
+    padding:0.4rem 0.8rem;
+    font-family:'Fixedsys', monospace;
+    cursor:pointer;
+}
+.top-bar button:hover {
+    background:#FFFFFF;
+    color:#00101D;
+}
+
+/* Sidebar */
+.sidebar {
+    position:fixed;
+    top:60px; /* below header */
+    left:0;
+    width:200px;
+    height:calc(100vh - 60px);
+    background:#00101D;
+    padding-top:1rem;
+    overflow-y:auto;
+}
+.sidebar nav ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.sidebar nav ul li a {
+    display:flex;
+    align-items:center;
+    gap:0.8rem;
+    color:#FFFFFF;
+    padding:0.8rem 1rem;
+    text-decoration:none;
+}
+.sidebar nav ul li a.active,
+.sidebar nav ul li a:hover {
+    background:#FFFFFF;
+    color:#00101D;
+}
+
+/* Panel frame (main content wrapper) */
+.panel-frame {
+    margin-left:210px; /* space for sidebar */
+    padding:1.5rem;
+    background:#061A25;
+    border:2px solid #000000; /* black border */
+    border-radius:8px;
+    color:#FFFFFF;
+}
+
+/* Grid cards */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    gap:1rem;
+    margin-top:1rem;
+}
+.card {
+    background:#0A232E; /* slightly lighter than panel */
+    border:2px solid #FFFFFF;
+    border-radius:8px;
+    padding:1rem;
+    color:#FFFFFF;
+    font-family:'Fixedsys', monospace;
+}
+.card h3 {
+    margin-bottom:0.5rem;
+    font-size:1.1rem;
+    color:#FFFFFF;
+}
+
+/* Footer */
+.footer {
+    text-align:center;
+    padding:0.8rem;
+    background:#00101D;
+    color:#FFFFFF;
+    margin-top:2rem;
+}
+
+/* Modal */
+.modal {
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background:rgba(0,0,0,0.6);
+}
+.modal-content {
+    background:#061A25;
+    margin:10% auto;
+    padding:20px;
+    border:2px solid #FFFFFF;
+    width:300px;
+    color:#FFFFFF;
+    font-family:'Fixedsys', monospace;
+    border-radius:8px;
+}
+.modal-content input {
+    width:100%;
+    padding:0.4rem;
+    margin-top:0.4rem;
+    border:1px solid #FFFFFF;
+    background:#00101D;
+    color:#FFFFFF;
+}
+.modal-content button {
+    background:#FFFFFF;
+    color:#00101D;
+    border:none;
+    padding:0.5rem 1rem;
+    margin-top:0.8rem;
+    cursor:pointer;
+    font-family:'Fixedsys', monospace;
+}
+.close {
+    color:#FFFFFF;
+    float:right;
+    font-size:1.5rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* Icons white */
+.fas {color:#FFFFFF;}
+
+.top-bar {
+    background:#00101D; /* darker bar */
+    color:#FFFFFF;
+    padding:0.5rem 1rem;
+    display:flex;justify-content:space-between;align-items:center;
+}
+.top-bar button {
+    background:none;
+    border:2px solid #FFFFFF;
+    color:#FFFFFF;
+    padding:0.4rem 0.8rem;
+    font-family:'Fixedsys', monospace;
+    cursor:pointer;
+    margin-right:0.5rem;
+}
+.top-bar button:hover {
+    background:#FFFFFF;
+    color:#00101D;
+}
+/* Modal */
+.modal {
+    display:none; /* hidden by default */
+    position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.6);
+}
+.modal-content {
+    background:#061A25;
+    margin:10% auto; padding:20px; border:2px solid #FFFFFF; width:300px; color:#FFFFFF; font-family:'Fixedsys', monospace;
+    border-radius:8px;
+}
+.modal-content input {
+    width:100%; padding:0.4rem; margin-top:0.4rem; border:1px solid #FFFFFF; background:#00101D; color:#FFFFFF;
+}
+.modal-content button {
+    background:#FFFFFF; color:#00101D; border:none; padding:0.5rem 1rem; margin-top:0.8rem; cursor:pointer; font-family:'Fixedsys', monospace;
+}
+.close {
+    color:#FFFFFF; float:right; font-size:1.5rem; font-weight:bold; cursor:pointer;
+}
+/* Sidebar adjustments */
+.sidebar {
+    background:#00101D;
+}
+.sidebar nav ul li a {
+    color:#FFFFFF;
+}
+.sidebar nav ul li a.active, .sidebar nav ul li a:hover {
+    background:#FFFFFF; color:#00101D;
+}
+/* Panel frame adjustments */
+.panel-frame {
+    border:2px solid #000000; /* black border */
+    background:#061A25;
+    color:#FFFFFF;
+}
+
 .panel-frame {
     background:#0A232E; /* cor de fundo da foto */
     border:2px solid #FFFFFF; /* borda clara */

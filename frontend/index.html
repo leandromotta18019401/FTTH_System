@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STFTTH System – Dashboard</title>
     <link rel="stylesheet" href="styles.css" />
-    <!-- Optionally include an icon font such as Font Awesome -->
     <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Header (top) -->
     <header class="header">
         <div class="brand">STFTTH System</div>
         <div class="user-actions">
@@ -17,44 +17,115 @@
             <img src="/path/to/avatar.png" alt="User" class="avatar" />
         </div>
     </header>
-
-    <aside class="sidebar">
+    <!-- Top bar (just below header) -->
+    <div class="top-bar">
+        <button class="menu-btn" id="openMenuBtn"><i class="fas fa-bars"></i> Menu</button>
+        <button class="login-btn" id="openLoginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+    </div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
         <nav>
             <ul>
-                <li><a href="#" class="active"><i class="fas fa-chart-line"></i>Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-file-invoice-dollar"></i>Finanças</a></li>
-                <li><a href="#"><i class="fas fa-network-wired"></i>NOC</a></li>
-                <li><a href="#"><i class="fas fa-users"></i>CRM</a></li>
-                <li><a href="#"><i class="fas fa-tools"></i>Operação de Campo</a></li>
-                <li><a href="#"><i class="fas fa-chart-pie"></i>Relatórios</a></li>
+                <li><a href="#" class="tab-link active" data-tab="dashboard"><i class="fas fa-chart-line"></i>Dashboard</a></li>
+                <li><a href="#" class="tab-link" data-tab="financas"><i class="fas fa-file-invoice-dollar"></i>Finanças</a></li>
+                <li><a href="#" class="tab-link" data-tab="noc"><i class="fas fa-network-wired"></i>NOC</a></li>
+                <li><a href="#" class="tab-link" data-tab="crm"><i class="fas fa-users"></i>CRM</a></li>
+                <li><a href="#" class="tab-link" data-tab="operacao"><i class="fas fa-tools"></i>Operação de Campo</a></li>
+                <li><a href="#" class="tab-link" data-tab="relatorios"><i class="fas fa-chart-pie"></i>Relatórios</a></li>
             </ul>
         </nav>
     </aside>
-
-    <div class="panel-frame"><main class="content">
-        <section class="grid">
-            <article class="card">
-                <h3>Receitas Mensais</h3>
-                <p>R$ 152.300,00</p>
-            </article>
-            <article class="card">
-                <h3>Tickets Abertos</h3>
-                <p>12</p>
-            </article>
-            <article class="card">
-                <h3>Status da Rede</h3>
-                <p>Operando Normalmente</p>
-            </article>
-            <article class="card">
-                <h3>Novas Vendas</h3>
-                <p>34 contratos</p>
-            </article>
-        </section>
-    </main></div>
-
+    <!-- Main panel -->
+    <div class="panel-frame" id="panel">
+        <main class="content">
+            <!-- Tab contents -->
+            <section class="tab-content" id="dashboard">
+                <div class="grid">
+                    <article class="card"><h3>Receitas Mensais</h3><p>R$ 152.300,00</p></article>
+                    <article class="card"><h3>Tickets Abertos</h3><p>12</p></article>
+                    <article class="card"><h3>Status da Rede</h3><p>Operando Normalmente</p></article>
+                    <article class="card"><h3>Novas Vendas</h3><p>34 contratos</p></article>
+                </div>
+            </section>
+            <section class="tab-content" id="financas" style="display:none;">
+                <h2>Finanças</h2>
+                <p>Conteúdo da área de Finanças.</p>
+            </section>
+            <section class="tab-content" id="noc" style="display:none;">
+                <h2>NOC</h2>
+                <p>Conteúdo da área de NOC.</p>
+            </section>
+            <section class="tab-content" id="crm" style="display:none;">
+                <h2>CRM</h2>
+                <p>Conteúdo da área de CRM.</p>
+            </section>
+            <section class="tab-content" id="operacao" style="display:none;">
+                <h2>Operação de Campo</h2>
+                <p>Conteúdo da área de Operação de Campo.</p>
+            </section>
+            <section class="tab-content" id="relatorios" style="display:none;">
+                <h2>Relatórios</h2>
+                <p>Conteúdo da área de Relatórios.</p>
+            </section>
+        </main>
+    </div>
+    <!-- Footer -->
     <footer class="footer">
         © 2026 FTTH System – Versão 1.0.0
     </footer>
+    <!-- Modal login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" id="closeLoginBtn">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="user">Usuário:</label><br/>
+                <input type="text" id="user" name="user"><br/>
+                <label for="pwd">Senha:</label><br/>
+                <input type="password" id="pwd" name="pwd"><br/><br/>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+    <!-- JavaScript for interactions -->
+    <script>
+        // Toggle sidebar visibility
+        const sidebar = document.getElementById('sidebar');
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        openMenuBtn.addEventListener('click', () => {
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        });
+        // Open/close login modal
+        const loginModal = document.getElementById('loginModal');
+        const openLoginBtn = document.getElementById('openLoginBtn');
+        const closeLoginBtn = document.getElementById('closeLoginBtn');
+        openLoginBtn.addEventListener('click', () => { loginModal.style.display = 'block'; });
+        closeLoginBtn.addEventListener('click', () => { loginModal.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; });
+        // Tab navigation
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('data-tab');
+                // Remove active class
+                tabLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                // Show/hide tab contents
+                tabContents.forEach(section => {
+                    if (section.id === target) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
